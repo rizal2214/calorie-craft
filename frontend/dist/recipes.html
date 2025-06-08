@@ -4,8 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Calorie Craft - Recipes</title>
-        <!-- Tailwind CSS via CDN -->
-        <script src="https://cdn.tailwindcss.com"></script>
+
         <!-- Google Fonts: Inter -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,8 +12,12 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
             rel="stylesheet"
         />
+
+        <!-- Link to File CSS -->
+        <link rel="stylesheet" href="./css/style.css" />
+
+        <!-- Custom Internal CSS -->
         <style>
-            /* Menggunakan font Inter sebagai default jika tersedia */
             body {
                 font-family: "Inter", sans-serif;
             }
@@ -24,13 +27,9 @@
         <!-- Header -->
         <header class="border-b border-gray-200 bg-white sticky top-0 z-30">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- Struktur utama diubah menjadi 2 kolom dengan justify-between -->
                 <div class="flex h-16 items-center justify-between">
-                    <!-- Grup Kiri: Logo, Pembatas, dan Navigasi -->
                     <div class="flex items-center gap-6">
-                        <!-- Logo & Tombol Hamburger -->
                         <div class="flex items-center gap-4">
-                            <!-- Tombol Hamburger (Hanya Tampil di Mobile) -->
                             <button
                                 id="hamburger-button"
                                 class="md:hidden p-2 -ml-2 rounded-md focus:outline-none"
@@ -51,88 +50,58 @@
                                 </div>
                             </button>
                             <!-- Logo -->
-                            <a href="#" class="text-xl font-bold text-gray-800">
+                            <a
+                                href="./index.html"
+                                class="text-xl font-bold text-gray-800"
+                            >
                                 CalorieCraft
                             </a>
                         </div>
 
-                        <!-- Pembatas Vertikal (Hanya Tampil di Desktop) -->
                         <div
                             class="hidden md:block h-6 w-px bg-gray-200"
                             aria-hidden="true"
                         ></div>
 
-                        <!-- Navigasi (Sekarang menjadi bagian dari grup kiri) -->
                         <nav
                             class="hidden md:flex gap-6 text-sm font-medium text-gray-600"
                         >
                             <a href="./index.html" class="hover:text-gray-900"
-                                >Home</a
+                                >Calculator</a
                             >
                             <a href="./recipes.html" class="hover:text-gray-900"
                                 >Recipes</a
                             >
-                            <a href="#" class="hover:text-gray-900">Explore</a>
                             <a href="./about.html" class="hover:text-gray-900"
                                 >About Us</a
-                            >
-                            <a href="#" class="hover:text-gray-900"
-                                >Healthy Eating</a
                             >
                         </nav>
                     </div>
 
-                    <!-- Grup Kanan: Actions (Tidak Berubah) -->
-                    <div class="flex items-center gap-4">
-                        <!-- Tombol Notifikasi -->
-                        <button class="p-2 rounded-full hover:bg-gray-100">
-                            <span class="sr-only">View notifications</span>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="w-6 h-6 text-gray-600"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-                                />
-                            </svg>
-                        </button>
-                        <!-- Avatar Pengguna -->
+                    <div class="flex items-center">
                         <button
-                            class="w-8 h-8 rounded-full overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                            id="recalculate-button"
+                            class="text-sm font-semibold bg-green-500 text-white rounded-full px-5 py-2 hover:bg-green-600 transition-colors focus:outline-none"
                         >
-                            <span class="sr-only">Open user menu</span>
-                            <img
-                                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80"
-                                alt="User avatar"
-                                class="w-full h-full object-cover"
-                            />
+                            Calculate ->
                         </button>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- Sidebar Mobile Menu -->
+        <!-- Sidebar -->
         <div id="mobile-menu-container" class="fixed inset-0 z-40 hidden">
-            <!-- Overlay -->
             <div
                 id="mobile-menu-overlay"
                 class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 ease-in-out"
             ></div>
 
-            <!-- Panel Sidebar -->
             <div
                 id="mobile-menu"
                 class="relative z-50 w-4/5 max-w-xs h-full bg-white shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out"
             >
                 <div class="flex flex-col h-full">
-                    <!-- Header Sidebar -->
                     <div
                         class="flex items-center justify-between p-4 border-b border-gray-200"
                     >
@@ -158,14 +127,13 @@
                             </svg>
                         </button>
                     </div>
-                    <!-- Navigasi di dalam Sidebar -->
                     <nav class="flex-grow p-4">
                         <ul class="flex flex-col gap-4 text-gray-700">
                             <li>
                                 <a
                                     href="./index.html"
                                     class="block py-2 px-3 rounded-md hover:bg-gray-100 hover:text-gray-900 font-medium"
-                                    >Home</a
+                                    >Calculator</a
                                 >
                             </li>
                             <li>
@@ -175,25 +143,12 @@
                                     >Recipes</a
                                 >
                             </li>
+
                             <li>
                                 <a
-                                    href="./explore.html"
+                                    href="./about.html"
                                     class="block py-2 px-3 rounded-md hover:bg-gray-100 hover:text-gray-900 font-medium"
-                                    >Explore</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    class="block py-2 px-3 rounded-md hover:bg-gray-100 hover:text-gray-900 font-medium"
-                                    >Cooking</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    class="block py-2 px-3 rounded-md hover:bg-gray-100 hover:text-gray-900 font-medium"
-                                    >Healthy Eating</a
+                                    >About Us</a
                                 >
                             </li>
                         </ul>
@@ -201,6 +156,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- Container -->
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Main Content -->
             <main class="py-10">
@@ -212,63 +169,12 @@
                     <p
                         class="bg-gray-100 text-gray-800 font-medium py-2 px-4 rounded-lg text-sm"
                     >
-                        BMI: <span>19.0</span>
+                        BMI: <span id="bmi-number"></span>
                     </p>
                 </div>
 
                 <!-- Cuisine Filters -->
-                <nav class="flex flex-wrap gap-3 mb-6">
-                    <a
-                        href="#"
-                        class="py-2 px-4 rounded-full text-sm font-medium bg-gray-900 text-white"
-                        >All</a
-                    >
-                    <a
-                        href="#"
-                        class="py-2 px-4 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200"
-                        >Indian</a
-                    >
-                    <a
-                        href="#"
-                        class="py-2 px-4 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200"
-                        >Chinese</a
-                    >
-                    <a
-                        href="#"
-                        class="py-2 px-4 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200"
-                        >Italian</a
-                    >
-                    <a
-                        href="#"
-                        class="py-2 px-4 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200"
-                        >Mexican</a
-                    >
-                    <a
-                        href="#"
-                        class="py-2 px-4 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200"
-                        >Mediterranean</a
-                    >
-                    <a
-                        href="#"
-                        class="py-2 px-4 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200"
-                        >Japanese</a
-                    >
-                    <a
-                        href="#"
-                        class="py-2 px-4 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200"
-                        >French</a
-                    >
-                    <a
-                        href="#"
-                        class="py-2 px-4 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200"
-                        >Thai</a
-                    >
-                    <a
-                        href="#"
-                        class="py-2 px-4 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200"
-                        >Greek</a
-                    >
-                </nav>
+                <nav class="flex flex-wrap gap-3 mb-6" id="category"></nav>
 
                 <!-- Recipe Search Bar -->
                 <div class="relative mb-8">
@@ -289,6 +195,7 @@
                         </svg>
                     </div>
                     <input
+                        id="filter-input"
                         type="text"
                         placeholder="Find a recipe"
                         class="w-full rounded-lg bg-gray-100 py-3 pl-11 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-green-400 placeholder:text-gray-500"
@@ -298,131 +205,198 @@
                 <!-- Recipe Grid -->
                 <div
                     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-8"
+                    id="recipes-wrapper"
+                ></div>
+
+                <!-- [BARU] Container untuk Tombol Pagination -->
+                <div
+                    id="pagination-wrapper"
+                    class="flex justify-center items-center gap-2 mt-12 py-4"
                 >
-                    <!-- Recipe Card 1 -->
-                    <article>
-                        <img
-                            src="https://placehold.co/300x200/E57C3E/FFFFFF?text=Tikka+Masala"
-                            alt="Chicken Tikka Masala"
-                            class="w-full h-36 object-cover rounded-lg mb-3"
-                        />
-                        <h3 class="font-semibold text-gray-900">
-                            Chicken Tikka Masala
-                        </h3>
-                        <p class="text-sm text-gray-500">30 min, 450 cal</p>
-                    </article>
-
-                    <!-- Recipe Card 2 -->
-                    <article>
-                        <img
-                            src="https://placehold.co/300x200/5A7C4F/FFFFFF?text=Stir-Fry"
-                            alt="Veggie Tofu Stir-Fry"
-                            class="w-full h-36 object-cover rounded-lg mb-3"
-                        />
-                        <h3 class="font-semibold text-gray-900">
-                            Veggie Tofu Stir-Fry
-                        </h3>
-                        <p class="text-sm text-gray-500">20 min, 300 cal</p>
-                    </article>
-
-                    <!-- Recipe Card 3 -->
-                    <article>
-                        <img
-                            src="https://placehold.co/300x200/F4E0B9/333333?text=Carbonara"
-                            alt="Spaghetti Carbonara"
-                            class="w-full h-36 object-cover rounded-lg mb-3"
-                        />
-                        <h3 class="font-semibold text-gray-900">
-                            Spaghetti Carbonara
-                        </h3>
-                        <p class="text-sm text-gray-500">25 min, 500 cal</p>
-                    </article>
-
-                    <!-- Recipe Card 4 -->
-                    <article>
-                        <img
-                            src="https://placehold.co/300x200/F5B945/FFFFFF?text=Casserole"
-                            alt="Enchilada Casserole"
-                            class="w-full h-36 object-cover rounded-lg mb-3"
-                        />
-                        <h3 class="font-semibold text-gray-900">
-                            Enchilada Casserole
-                        </h3>
-                        <p class="text-sm text-gray-500">40 min, 350 cal</p>
-                    </article>
-
-                    <!-- Recipe Card 5 -->
-                    <article>
-                        <img
-                            src="https://placehold.co/300x200/C06543/FFFFFF?text=Soup"
-                            alt="Minestrone Soup"
-                            class="w-full h-36 object-cover rounded-lg mb-3"
-                        />
-                        <h3 class="font-semibold text-gray-900">
-                            Minestrone Soup
-                        </h3>
-                        <p class="text-sm text-gray-500">45 min, 400 cal</p>
-                    </article>
-
-                    <!-- Recipe Card 6 -->
-                    <article>
-                        <img
-                            src="https://placehold.co/300x200/FBCB0A/333333?text=Scramble"
-                            alt="Tofu Scramble"
-                            class="w-full h-36 object-cover rounded-lg mb-3"
-                        />
-                        <h3 class="font-semibold text-gray-900">
-                            Tofu Scramble
-                        </h3>
-                        <p class="text-sm text-gray-500">15 min, 200 cal</p>
-                    </article>
-
-                    <!-- Recipe Card 7 -->
-                    <article>
-                        <img
-                            src="https://placehold.co/300x200/77B048/FFFFFF?text=Greek+Salad"
-                            alt="Greek Salad"
-                            class="w-full h-36 object-cover rounded-lg mb-3"
-                        />
-                        <h3 class="font-semibold text-gray-900">Greek Salad</h3>
-                        <p class="text-sm text-gray-500">10 min, 150 cal</p>
-                    </article>
-
-                    <!-- Recipe Card 8 -->
-                    <article>
-                        <img
-                            src="https://placehold.co/300x200/E87E70/FFFFFF?text=Sushi"
-                            alt="Sushi Rolls"
-                            class="w-full h-36 object-cover rounded-lg mb-3"
-                        />
-                        <h3 class="font-semibold text-gray-900">Sushi Rolls</h3>
-                        <p class="text-sm text-gray-500">5 min, 200 cal</p>
-                    </article>
-
-                    <!-- Recipe Card 9 -->
-                    <article>
-                        <img
-                            src="https://placehold.co/300x200/A8D1A5/D85C42?text=Veggies"
-                            alt="Ratatouille"
-                            class="w-full h-36 object-cover rounded-lg mb-3"
-                        />
-                        <h3 class="font-semibold text-gray-900">Ratatouille</h3>
-                        <p class="text-sm text-gray-500">30 min, 250 cal</p>
-                    </article>
-
-                    <!-- Recipe Card 10 -->
-                    <article>
-                        <img
-                            src="https://placehold.co/300x200/EED9B4/333333?text=Pad+Thai"
-                            alt="Pad Thai"
-                            class="w-full h-36 object-cover rounded-lg mb-3"
-                        />
-                        <h3 class="font-semibold text-gray-900">Pad Thai</h3>
-                        <p class="text-sm text-gray-500">25 min, 300 cal</p>
-                    </article>
+                    <!-- Tombol pagination akan dibuat oleh JavaScript di sini -->
                 </div>
             </main>
         </div>
+
+        <!-- Footer -->
+        <footer class="bg-gray-50 border-t border-gray-200">
+            <div
+                class="container mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8 lg:pt-16"
+            >
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                >
+                    <div class="space-y-4 md:col-span-2 lg:col-span-1">
+                        <a
+                            href="./index.html"
+                            class="text-xl font-bold text-gray-800"
+                        >
+                            CalorieCraft
+                        </a>
+                        <p class="text-sm text-gray-600">
+                            Helping you build a healthier relationship with
+                            food, one recipe at a time.
+                        </p>
+                        <div class="flex space-x-4 pt-2">
+                            <a
+                                href="#"
+                                class="text-gray-500 hover:text-green-600"
+                            >
+                                <span class="sr-only">Facebook</span>
+                                <svg
+                                    class="w-6 h-6"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                            </a>
+                            <a
+                                href="#"
+                                class="text-gray-500 hover:text-green-600"
+                            >
+                                <span class="sr-only">Instagram</span>
+                                <svg
+                                    class="w-6 h-6"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0-2a7 7 0 110 14 7 7 0 010-14zm4.5-1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+                                        clip-rule="evenodd"
+                                    />
+                                </svg>
+                            </a>
+                            <a
+                                href="#"
+                                class="text-gray-500 hover:text-green-600"
+                            >
+                                <span class="sr-only">X (Twitter)</span>
+                                <svg
+                                    class="w-6 h-6"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                                    />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3
+                            class="text-sm font-semibold text-gray-900 tracking-wider uppercase"
+                        >
+                            Navigation
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li>
+                                <a
+                                    href="./index.html"
+                                    class="text-gray-600 hover:text-green-600 transition-colors"
+                                    >BMI Calculator</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="./recipes.html"
+                                    class="text-gray-600 hover:text-green-600 transition-colors"
+                                    >Recipes</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="#"
+                                    class="text-gray-600 hover:text-green-600 transition-colors"
+                                    >About Us</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="#"
+                                    class="text-gray-600 hover:text-green-600 transition-colors"
+                                    >Blog</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3
+                            class="text-sm font-semibold text-gray-900 tracking-wider uppercase"
+                        >
+                            COMPANY
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li>
+                                <a
+                                    href="#"
+                                    class="text-gray-600 hover:text-green-600 transition-colors"
+                                    >Contact</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="#"
+                                    class="text-gray-600 hover:text-green-600 transition-colors"
+                                    >Career</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3
+                            class="text-sm font-semibold text-gray-900 tracking-wider uppercase"
+                        >
+                            Legal
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li>
+                                <a
+                                    href="#"
+                                    class="text-gray-600 hover:text-green-600 transition-colors"
+                                    >Terms of Service</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="#"
+                                    class="text-gray-600 hover:text-green-600 transition-colors"
+                                    >Privacy Policy</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="#"
+                                    class="text-gray-600 hover:text-green-600 transition-colors"
+                                    >Cookie Policy</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-12 pt-8 border-t border-gray-200 text-center text-sm"
+                >
+                    <p class="text-gray-500">
+                        © 2024 CalorieCraft. All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
         <script src="./js/headerScript.js"></script>
+        <script src="./js/recipesScript.js"></script>
     </body>
 </html>
